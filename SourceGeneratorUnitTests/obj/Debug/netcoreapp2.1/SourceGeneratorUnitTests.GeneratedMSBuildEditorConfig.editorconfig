@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = SourceGeneratorUnitTests
+build_property.ProjectDir = C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\
