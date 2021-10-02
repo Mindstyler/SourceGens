@@ -3,7 +3,7 @@
 [Generator]
 public class AutoDisposePersistentNativeCollections : ISourceGenerator
 {
-    private static readonly string[] _nativeCollections = { "NativeArray", "NativeList" };
+    private static readonly string[] s_nativeCollections = { "NativeArray", "NativeList" };
 
     public void Initialize(GeneratorInitializationContext context)
     {
@@ -34,7 +34,7 @@ public class AutoDisposePersistentNativeCollections : ISourceGenerator
 
     private static bool MultiCompare(string toCompare)
     {
-        foreach (string item in _nativeCollections)
+        foreach (string item in s_nativeCollections)
         {
             if (toCompare == item)
             {
