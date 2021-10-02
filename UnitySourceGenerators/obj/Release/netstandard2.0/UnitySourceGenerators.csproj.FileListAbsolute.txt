@@ -8,3 +8,4 @@ C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Rele
 C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.dll
 C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.pdb
 C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.csproj.AssemblyReference.cache
+C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.GlobalUsings.g.cs

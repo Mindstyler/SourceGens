@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eFz6ewR2DVfpGSL+2nkVgBHTg1pZWjC2aOH7AP6m2jrnZTsO4nvud/x9LejiTmiHmoxF3HzWwyWuKweSriESMg==",
+  "dgSpecHash": "HMQworz95nHabCNWH8FppuX+mBwZR8aeKdLmyHW1xRctF12ml/JMOgtJWJxmSx56NRq0G9f/EVPa5oesDNb/yg==",
   "success": true,
   "projectFilePath": "C:\\Users\\flott\\source\\repos\\UnitySourceGenerators\\SourceGeneratorUnitTests\\SourceGeneratorUnitTests.csproj",
   "expectedPackageFiles": [

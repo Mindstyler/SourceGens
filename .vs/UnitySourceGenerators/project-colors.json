@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e1a9ddaa-5fd7-45a7-8c09-24ecd97b1b32": {
+      "ProjectGuid": "e1a9ddaa-5fd7-45a7-8c09-24ecd97b1b32",
+      "DisplayName": "SourceGeneratorUnitTests",
+      "ColorIndex": 0
+    },
+    "bb076878-07e5-45ae-9974-dd5a3c5d0a40": {
+      "ProjectGuid": "bb076878-07e5-45ae-9974-dd5a3c5d0a40",
+      "DisplayName": "UnitySourceGenerators",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

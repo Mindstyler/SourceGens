@@ -119,7 +119,6 @@ C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\obj\R
 C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\obj\Release\net6\SourceGeneratorUnitTests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\obj\Release\net6\SourceGeneratorUnitTests.AssemblyInfoInputs.cache
 C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\obj\Release\net6\SourceGeneratorUnitTests.AssemblyInfo.cs
-C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\obj\Release\net6\SourceGeneratorUnitTests.ImplicitNamespaceImports.cs
 C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\obj\Release\net6\SourceGeneratorUnitTests.csproj.CoreCompileInputs.cache
 C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\obj\Release\net6\SourceGeneratorUnitTests.dll
 C:\Users\flott\source\repos\UnitySourceGenerators\SourceGeneratorUnitTests\obj\Release\net6\ref\SourceGeneratorUnitTests.dll

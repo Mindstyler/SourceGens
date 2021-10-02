@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 	  <LangVersion>latest</LangVersion>
 	  <Nullable>enable</Nullable>
+	  <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
 	<PropertyGroup>
@@ -15,6 +16,14 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.8.0" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.2" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System.Text" />
+		<Using Include="Microsoft.CodeAnalysis"/>
+		<Using Include="Microsoft.CodeAnalysis.CSharp.Syntax"/>
+		<Using Include="Microsoft.CodeAnalysis.Text"/>
+		<Using Include="Microsoft.CodeAnalysis.CSharp"/>
 	</ItemGroup>
 
 </Project>
