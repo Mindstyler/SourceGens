@@ -6259,11 +6259,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\flott\\source\\repos\\UnitySourceGenerators\\SourceGeneratorUnitTests\\SourceGeneratorUnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\flott\\Documents\\GitHub\\SourceGens\\SourceGeneratorUnitTests\\SourceGeneratorUnitTests.csproj",
       "projectName": "SourceGeneratorUnitTests",
-      "projectPath": "C:\\Users\\flott\\source\\repos\\UnitySourceGenerators\\SourceGeneratorUnitTests\\SourceGeneratorUnitTests.csproj",
+      "projectPath": "C:\\Users\\flott\\Documents\\GitHub\\SourceGens\\SourceGeneratorUnitTests\\SourceGeneratorUnitTests.csproj",
       "packagesPath": "C:\\Users\\flott\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\flott\\source\\repos\\UnitySourceGenerators\\SourceGeneratorUnitTests\\obj\\",
+      "outputPath": "C:\\Users\\flott\\Documents\\GitHub\\SourceGens\\SourceGeneratorUnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -6284,8 +6284,8 @@
         "net6.0": {
           "targetAlias": "net6",
           "projectReferences": {
-            "C:\\Users\\flott\\source\\repos\\UnitySourceGenerators\\UnitySourceGenerators\\UnitySourceGenerators.csproj": {
-              "projectPath": "C:\\Users\\flott\\source\\repos\\UnitySourceGenerators\\UnitySourceGenerators\\UnitySourceGenerators.csproj"
+            "C:\\Users\\flott\\Documents\\GitHub\\SourceGens\\UnitySourceGenerators\\UnitySourceGenerators.csproj": {
+              "projectPath": "C:\\Users\\flott\\Documents\\GitHub\\SourceGens\\UnitySourceGenerators\\UnitySourceGenerators.csproj"
             }
           }
         }

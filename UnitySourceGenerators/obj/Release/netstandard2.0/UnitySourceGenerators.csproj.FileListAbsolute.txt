@@ -9,3 +9,14 @@ C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Rele
 C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.pdb
 C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.csproj.AssemblyReference.cache
 C:\Users\flott\source\repos\UnitySourceGenerators\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.GlobalUsings.g.cs
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\bin\Release\netstandard2.0\UnitySourceGenerators.deps.json
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\bin\Release\netstandard2.0\UnitySourceGenerators.dll
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\bin\Release\netstandard2.0\UnitySourceGenerators.pdb
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.GlobalUsings.g.cs
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.csproj.AssemblyReference.cache
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.AssemblyInfoInputs.cache
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.AssemblyInfo.cs
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.csproj.CoreCompileInputs.cache
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.dll
+C:\Users\flott\Documents\GitHub\SourceGens\UnitySourceGenerators\obj\Release\netstandard2.0\UnitySourceGenerators.pdb

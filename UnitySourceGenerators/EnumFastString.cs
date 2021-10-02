@@ -157,7 +157,7 @@ namespace SourceGenerated
             }
         }
 
-        private class EnumMemberComparer : IEqualityComparer<EnumMemberDeclarationSyntax>
+        private sealed class EnumMemberComparer : IEqualityComparer<EnumMemberDeclarationSyntax>
         {
             private readonly GeneratorExecutionContext _context;
 

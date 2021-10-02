@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FJKi3byGeX4IQlxPiOtNiAKQr+qh8dMSd10ZfRtsFT/gw2u6Y4ewfyHel0ZK82iGY/nlfKWCc7d2uMbCmj7Ekg==",
+  "dgSpecHash": "Z9+CUHUF+RmXL2QKOBncrXb+ANjNaLTSjQ43ogpLU7LdWhdbuafCZ7JnA7bUmFqI6mvjyoz0khIPRjVSg6TUxA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\flott\\source\\repos\\UnitySourceGenerators\\UnitySourceGenerators\\UnitySourceGenerators.csproj",
+  "projectFilePath": "C:\\Users\\flott\\Documents\\GitHub\\SourceGens\\UnitySourceGenerators\\UnitySourceGenerators.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\flott\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\flott\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
