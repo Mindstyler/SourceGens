@@ -1,7 +1,7 @@
 ﻿namespace UnitySourceGenerators;
 
 [Generator]
-public class EnumFastStringGenerator : ISourceGenerator
+internal class EnumFastStringGenerator : ISourceGenerator
 {
     public void Initialize(GeneratorInitializationContext context)
     {
@@ -14,15 +14,15 @@ public class EnumFastStringGenerator : ISourceGenerator
 
         foreach (SyntaxTree syntaxTree in context.Compilation.SyntaxTrees)
         {
-            IEnumerable<EnumDeclarationSyntax> newEnums = syntaxTree.GetRoot().DescendantNodes().OfType<EnumDeclarationSyntax>()
+            IEnumerable<EnumDeclarationSyntax> enums = syntaxTree.GetRoot().DescendantNodes().OfType<EnumDeclarationSyntax>()
                 //this generator can only deal with public and internal enums because it writes extension methods
                 .Where(static @enum => @enum.Modifiers.Any(static modifier =>
                     modifier.IsKind(SyntaxKind.PublicKeyword)
                     || modifier.IsKind(SyntaxKind.InternalKeyword)));
 
-            foreach (EnumDeclarationSyntax newEnum in newEnums)
+            foreach (EnumDeclarationSyntax @enum in enums)
             {
-                IEnumerable<SyntaxNode> ancestorTree = newEnum.Ancestors()
+                IEnumerable<SyntaxNode> ancestorTree = @enum.Ancestors()
                     .Where(static ancestor =>
                         ancestor.IsKind(SyntaxKind.NamespaceDeclaration)
                         || ancestor.IsKind(SyntaxKind.ClassDeclaration)
@@ -43,7 +43,7 @@ public class EnumFastStringGenerator : ISourceGenerator
                     }
                 }
 
-                modifiers.Add(newEnum.Modifiers.Single(static modifier =>
+                modifiers.Add(@enum.Modifiers.Single(static modifier =>
                     modifier.IsKind(SyntaxKind.PublicKeyword)
                     || modifier.IsKind(SyntaxKind.InternalKeyword)));
 
@@ -58,13 +58,13 @@ public class EnumFastStringGenerator : ISourceGenerator
 
                 string[] fullPath = ancestorTree
                     .Select(syntaxNode => syntaxNode is TypeDeclarationSyntax typeDeclaration
-                        ? typeDeclaration.Identifier.Text + AddGenericTypeParametersToListAndReturnNeededOnesForType(typeDeclaration)
+                        ? typeDeclaration.Identifier.Text + ConcatGenericTypeParametersAndReturnNeededOnesForType(typeDeclaration)
                         : ((NamespaceDeclarationSyntax)syntaxNode).Name.ToString())
                     .Reverse()
-                    .Concat(new[] { newEnum.Identifier.Text })
+                    .Concat(new[] { @enum.Identifier.Text })
                     .ToArray(); //this needs to be a call to ToArray() because it needs to be evaluated to populate 'genericTypeParameters'
 
-                string AddGenericTypeParametersToListAndReturnNeededOnesForType(TypeDeclarationSyntax typeDeclaration)
+                string ConcatGenericTypeParametersAndReturnNeededOnesForType(TypeDeclarationSyntax typeDeclaration)
                 {
                     if (typeDeclaration.TypeParameterList is null)
                     {
@@ -81,14 +81,7 @@ public class EnumFastStringGenerator : ISourceGenerator
                     genericTypeParameters = "<" + genericTypeParameters + ">";
                 }
 
-                try
-                {
-                    enumInfo.Add($"{string.Join(".", fullPath)}", (newEnum, modifier, genericTypeParameters));
-                }
-                catch (ArgumentException)
-                {
-                    // Keep the Generator from crashing should an assembly have 2 or more equal types
-                }
+                enumInfo.Add($"{string.Join(".", fullPath)}", (@enum, modifier, genericTypeParameters));
             }
         }
 
@@ -137,7 +130,7 @@ namespace SourceGenerated
         {{
             return @enum switch
             {{");
-                foreach (EnumMemberDeclarationSyntax name in enumInfo[fullType].declaration.Members.Distinct(new EnumMemberComparer(context, GetSiblings(enumInfo[fullType].declaration))))
+                foreach (EnumMemberDeclarationSyntax name in enumInfo[fullType].declaration.Members.Distinct(new EnumMemberComparer(context, enumInfo[fullType].declaration.Members)))
                 {
                     sb.Append($"\n                {fullType}.{name.Identifier.Text} => nameof({fullType}.{name.Identifier.Text}),");
                 }
@@ -148,82 +141,41 @@ namespace SourceGenerated
             sb.Append("\n    }\n}");
             
             return sb.ToString();
-
-            static IEnumerable<(EnumMemberDeclarationSyntax, EnumMemberDeclarationSyntax)> GetSiblings(EnumDeclarationSyntax enumSyntax)
-            {
-                IEnumerable<EnumMemberDeclarationSyntax> childNodes = enumSyntax.ChildNodes().OfType<EnumMemberDeclarationSyntax>();
-
-                return childNodes.Zip(childNodes.Skip(1), static (previous, current) => (previous, current));
-            }
         }
 
         private sealed class EnumMemberComparer : IEqualityComparer<EnumMemberDeclarationSyntax>
         {
             private readonly GeneratorExecutionContext _context;
+            private readonly SeparatedSyntaxList<EnumMemberDeclarationSyntax> _allEnumMembers;
 
-            private readonly IEnumerable<(EnumMemberDeclarationSyntax previous, EnumMemberDeclarationSyntax current)> _siblings;
-
-            internal EnumMemberComparer(GeneratorExecutionContext context, IEnumerable<(EnumMemberDeclarationSyntax, EnumMemberDeclarationSyntax)> siblings)
+            internal EnumMemberComparer(GeneratorExecutionContext context, SeparatedSyntaxList<EnumMemberDeclarationSyntax> allEnumMembers)
             {
                 _context = context;
-                _siblings = siblings;
+                _allEnumMembers = allEnumMembers;
             }
 
-            public bool Equals(EnumMemberDeclarationSyntax x, EnumMemberDeclarationSyntax y)/* => ((x.EqualsValue is null) && (y.EqualsValue is null)) ? false : GetValue(x) == GetValue(y);*/
+            public bool Equals(EnumMemberDeclarationSyntax left, EnumMemberDeclarationSyntax right) => (left.EqualsValue is not null || right.EqualsValue is not null) && (GetValue(left) == GetValue(right));
+
+            public int GetHashCode(EnumMemberDeclarationSyntax enumMemberDeclarationSyntax) => GetValue(enumMemberDeclarationSyntax);
+
+            private int GetValue(EnumMemberDeclarationSyntax enumMemberDeclarationSyntax)
             {
-                if ((x.EqualsValue is null) && (y.EqualsValue is null)) // if both are null, both can be used
-                {
-                    return false;
-                }
-
-                //File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\GeneratorResults\Dup.cs", GetValue(x) + "  " + GetValue(y) + "\n");
-
-                return GetValue(x) == GetValue(y);
-            }
-
-            public int GetHashCode(EnumMemberDeclarationSyntax obj) => GetValue(obj).GetHashCode();
-
-            private int GetValue(EnumMemberDeclarationSyntax syntax)
-            {
-                return (syntax.EqualsValue is not null)
+                return (enumMemberDeclarationSyntax.EqualsValue is not null)
                     ? int.Parse(GetPossibleOperations().ConstantValue.Value.ToString())
-                    : SingleOrDefaultHack() + 1;
+                    : GetValueThroughRecursion();
 
-                // TODO can be replaced with c# 6 version of SingleOrDefault(obj defaultValue) as soon as generators can be built for .net6
-                int SingleOrDefaultHack()
+                int GetValueThroughRecursion()
                 {
-                    // .net6 version of the things below
-                    //(EnumMemberDeclarationSyntax previous, EnumMemberDeclarationSyntax current)? e = _siblings.SingleOrDefault(siblings => siblings.current == syntax, null);
+                    EnumMemberDeclarationSyntax? previous = _allEnumMembers.TakeWhile(current => current != enumMemberDeclarationSyntax).LastOrDefault();
 
-                    (EnumMemberDeclarationSyntax previous, EnumMemberDeclarationSyntax current)? e;
-
-                    try
-                    {
-                        e = _siblings.Single(siblings => siblings.current == syntax);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        e = null;
-                    }
-
-                    return (e is not null) ? GetValue(e.Value.previous) : 0;
+                    return (previous is not null) ? GetValue(previous) + 1 : 0;
                 }
 
                 IOperation GetPossibleOperations()
                 {
-                    //File.AppendAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\GeneratorResults\op.cs", _context.Compilation.GetSemanticModel(syntax.SyntaxTree).GetOperation(syntax.ChildNodes().OfType<EqualsValueClauseSyntax>().Single()).Children.Single().ConstantValue + "\n\n");
-
                     return _context.Compilation
-                        .GetSemanticModel(syntax.SyntaxTree)
-                        .GetOperation(syntax.ChildNodes().OfType<EqualsValueClauseSyntax>().Single()).Children.Single();
-
-                    //something like this below was possible, but i deleted it and currently it doesn't work
-                    //return syntax.DescendantNodes().OfType<IOperation>().FirstOrDefault(static operation =>
-                    //    operation.Kind is OperationKind.Literal
-                    //    or OperationKind.Binary
-                    //    or OperationKind.Conversion
-                    //    or OperationKind.Unary
-                    //    or OperationKind.Conditional);
+                        .GetSemanticModel(enumMemberDeclarationSyntax.SyntaxTree)
+                        .GetOperation(enumMemberDeclarationSyntax.ChildNodes().OfType<EqualsValueClauseSyntax>().Single())!.Children.Single();
                 }
             }
         }

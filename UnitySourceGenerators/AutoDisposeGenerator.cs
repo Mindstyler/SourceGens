@@ -1,7 +1,7 @@
 ﻿namespace UnitySourceGenerators;
 
 [Generator]
-public class AutoDisposePersistentNativeCollections : ISourceGenerator
+internal class AutoDisposePersistentNativeCollections : ISourceGenerator
 {
     private static readonly string[] s_nativeCollections = { "NativeArray", "NativeList" };
 
